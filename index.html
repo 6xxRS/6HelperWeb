@@ -1,1 +1,367 @@
-<html5></html5>
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/konva@9.3.18/konva.min.js"></script>
+    <meta charset="utf-8" />
+    <title>TheyNylocas - Battleships! Board Designer</title>
+    <style>
+        body {
+            margin: 0 0 0 20px;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000000;
+        }
+        p {
+            color: white;
+        }
+    </style>
+  </head>
+  <body>
+    <p>Instructions: Drag the ships and mines to the desired locations. Click on them to rotate them 90 degrees. When finished, press the button to copy the image to your clipboard.</p>
+    <div id="buttons"><button id="save">Copy to Clipboard</button></div>
+    <div id="container"></div>
+    <script>
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+
+        var stage = new Konva.Stage({
+            container: 'container',
+            width: width,
+            height: height,
+        });
+
+        function drawGameBoard() {
+            var layer = new Konva.Layer();
+
+            var layer1 = new Konva.Layer();
+            var layer2 = new Konva.Layer();
+            var layer3 = new Konva.Layer();
+            var layer4 = new Konva.Layer();
+            var layer5 = new Konva.Layer();
+            var layer6 = new Konva.Layer();
+            var layer7 = new Konva.Layer();
+            var layer8 = new Konva.Layer();
+            var layer9 = new Konva.Layer();
+            var layer10 = new Konva.Layer();
+            var layer11 = new Konva.Layer();
+            var layer12 = new Konva.Layer();
+            var layer13 = new Konva.Layer();
+
+            var game_bg = new Konva.Image({
+                image: background,
+                x: 0,
+                y: 0,
+                width: 700,
+                height: 700,
+                draggable: false,
+            });
+
+            
+            var ship5a = new Konva.Image({
+                image: ship_5a,
+                x: 700,
+                y: 20,
+                width: 310,
+                height: 62,
+                draggable: true,
+            });
+
+            var ship5b = new Konva.Image({
+                image: ship_5b,
+                x: 700,
+                y: 90,
+                width: 319,
+                height: 64,
+                draggable: true,
+            });
+
+            var ship4a = new Konva.Image({
+                image: ship_4a,
+                x: 700,
+                y: 160,
+                width: 248,
+                height: 62,
+                draggable: true,
+            });
+
+            var ship4b = new Konva.Image({
+                image: ship_4b,
+                x: 700,
+                y: 230,
+                width: 257,
+                height: 65,
+                draggable: true,
+            });
+
+            var ship3a = new Konva.Image({
+                image: ship_3a,
+                x: 700,
+                y: 300,
+                width: 190,
+                height: 64,
+                draggable: true,
+            });
+
+            var ship3b = new Konva.Image({
+                image: ship_3b,
+                x: 700,
+                y: 370,
+                width: 190,
+                height: 62,
+                draggable: true,
+            });
+
+            var ship2a = new Konva.Image({
+                image: ship_2a,
+                x: 700,
+                y: 440,
+                width: 126,
+                height: 64,
+                draggable: true,
+            });
+
+            var ship2b = new Konva.Image({
+                image: ship_2b,
+                x: 700,
+                y: 510,
+                width: 128,
+                height: 62,
+                draggable: true,
+            });
+
+            var mine1 = new Konva.Image({
+                image: mine,
+                x: 700,
+                y: 580,
+                width: 66,
+                height: 66,
+                draggable: true,
+            });
+
+            var mine2 = new Konva.Image({
+                image: mine,
+                x: 770,
+                y: 580,
+                width: 66,
+                height: 66,
+                draggable: true,
+            });
+
+            var mine3 = new Konva.Image({
+                image: mine,
+                x: 840,
+                y: 580,
+                width: 66,
+                height: 66,
+                draggable: true,
+            });
+
+            var mine4 = new Konva.Image({
+                image: mine,
+                x: 910,
+                y: 580,
+                width: 66,
+                height: 66,
+                draggable: true,
+            });
+
+            var mine5 = new Konva.Image({
+                image: mine,
+                x: 980,
+                y: 580,
+                width: 66,
+                height: 66,
+                draggable: true,
+            });
+
+            
+            ship5a.on('mouseover', function () {
+                document.body.style.cursor = 'pointer';
+            });
+            ship5a.on('mouseout', function () {
+                document.body.style.cursor = 'default';
+            });
+            ship5a.on('click', function() {
+                ship5a.rotate(90);
+            });
+
+            ship5b.on('mouseover', function () {
+                document.body.style.cursor = 'pointer';
+            });
+            ship5b.on('mouseout', function () {
+                document.body.style.cursor = 'default';
+            });
+            ship5b.on('click', function() {
+                ship5b.rotate(90);
+            });
+
+            ship4a.on('mouseover', function () {
+                document.body.style.cursor = 'pointer';
+            });
+            ship4a.on('mouseout', function () {
+                document.body.style.cursor = 'default';
+            });
+            ship4a.on('click', function() {
+                ship4a.rotate(90);
+            });
+
+            ship4b.on('mouseover', function () {
+                document.body.style.cursor = 'pointer';
+            });
+            ship4b.on('mouseout', function () {
+                document.body.style.cursor = 'default';
+            });
+            ship4b.on('click', function() {
+                ship4b.rotate(90);
+            });
+
+            ship3a.on('mouseover', function () {
+                document.body.style.cursor = 'pointer';
+            });
+            ship3a.on('mouseout', function () {
+                document.body.style.cursor = 'default';
+            });
+            ship3a.on('click', function() {
+                ship3a.rotate(90);
+            });
+
+            ship3b.on('mouseover', function () {
+                document.body.style.cursor = 'pointer';
+            });
+            ship3b.on('mouseout', function () {
+                document.body.style.cursor = 'default';
+            });
+            ship3b.on('click', function() {
+                ship3b.rotate(90);
+            });
+
+            ship2a.on('mouseover', function () {
+                document.body.style.cursor = 'pointer';
+            });
+            ship2a.on('mouseout', function () {
+                document.body.style.cursor = 'default';
+            });
+            ship2a.on('click', function() {
+                ship2a.rotate(90);
+            });
+
+            ship2b.on('mouseover', function () {
+                document.body.style.cursor = 'pointer';
+            });
+            ship2b.on('mouseout', function () {
+                document.body.style.cursor = 'default';
+            });
+            ship2b.on('click', function() {
+                ship2b.rotate(90);
+            });
+
+            layer.add(game_bg);
+
+            layer1.add(ship5a);
+            layer2.add(ship5b);
+            layer3.add(ship4a);
+            layer4.add(ship4b);
+            layer5.add(ship3a);
+            layer6.add(ship3b);
+            layer7.add(ship2a);
+            layer8.add(ship2b);
+            layer9.add(mine1);
+            layer10.add(mine2);
+            layer11.add(mine3);
+            layer12.add(mine4);
+            layer13.add(mine5);
+
+            stage.add(layer);
+            stage.add(layer1);
+            stage.add(layer2);
+            stage.add(layer3);
+            stage.add(layer4);
+            stage.add(layer5);
+            stage.add(layer6);
+            stage.add(layer7);
+            stage.add(layer8);
+            stage.add(layer9);
+            stage.add(layer10);
+            stage.add(layer11);
+            stage.add(layer12);
+            stage.add(layer13);
+
+        }
+
+        var background = new Image();
+        background.onload = function() {
+            drawGameBoard();
+        };
+        background.src = 'https://i.imgur.com/HF80KDD.png';
+
+        
+        var ship_5a = new Image();
+        ship_5a.onload = function () {};
+        ship_5a.src = 'https://i.imgur.com/4gdwcbW.png';
+
+        var ship_5b = new Image();
+        ship_5b.onload = function () {};
+        ship_5b.src = 'https://i.imgur.com/L3LGaps.png';
+
+        var ship_4a = new Image();
+        ship_4a.onload = function () {};
+        ship_4a.src = 'https://i.imgur.com/2PUpxBN.png';
+
+        var ship_4b = new Image();
+        ship_4b.onload = function () {};
+        ship_4b.src = 'https://i.imgur.com/XCq8mAF.png';
+
+        var ship_3a = new Image();
+        ship_3a.onload = function () {};
+        ship_3a.src = 'https://i.imgur.com/FZqcVrZ.png';
+
+        var ship_3b = new Image();
+        ship_3b.onload = function () {};
+        ship_3b.src = 'https://i.imgur.com/9VfS2Qh.png';
+
+        var ship_2a = new Image();
+        ship_2a.onload = function () {};
+        ship_2a.src = 'https://i.imgur.com/GAduTZ3.png';
+
+        var ship_2b = new Image();
+        ship_2b.onload = function () {};
+        ship_2b.src = 'https://i.imgur.com/BAiYAcU.png';
+
+        var mine = new Image();
+        mine.onload = function () {};
+        mine.src = 'https://i.imgur.com/flLFMiU.png';
+
+        background.crossOrigin = 'Anonymous';
+        ship_5a.crossOrigin = 'Anonymous';
+        ship_5b.crossOrigin = 'Anonymous';
+        ship_4a.crossOrigin = 'Anonymous';
+        ship_4b.crossOrigin = 'Anonymous';
+        ship_3a.crossOrigin = 'Anonymous';
+        ship_3b.crossOrigin = 'Anonymous';
+        ship_2a.crossOrigin = 'Anonymous';
+        ship_2b.crossOrigin = 'Anonymous';
+        mine.crossOrigin = 'Anonymous';
+
+        async function exportStageToClipboard(stage) {
+            const dataURL = stage.toDataURL();
+
+            try {
+                const blob = await (await fetch(dataURL)).blob();
+                const item = new ClipboardItem({ "image/png": blob });
+                await navigator.clipboard.write([item]);
+                alert("Game board copied to clipboard successfully!\nYou may simply paste this (ctrl + v) into your team channel in Discord.");
+            } catch (error) {
+                alert("Failed to copy game board to clipboard. Please try again or contact @6xx on Discord.");
+            }
+        }
+
+        document.getElementById('save').addEventListener(
+            'click',
+            function () {
+                exportStageToClipboard(stage);
+            },
+            false
+        );
+    </script>
+  </body>
+</html>
