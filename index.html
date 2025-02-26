@@ -6,13 +6,42 @@
     <title>TheyNylocas - Battleships! Board Designer</title>
     <style>
         body {
-            margin: 0 0 0 20px;
+            margin: 20px 20px 20px 20px;
             padding: 0;
             overflow: hidden;
             background-color: #000000;
-        }
-        p {
             color: white;
+        }
+        body p {
+            padding-left: 10px;
+        }
+        body #buttons {
+            padding-left: 10px;
+        }
+        span {
+            color: white;
+            font-size: 25px;
+        }
+        #top {
+            margin-top: 30px;
+            margin-left: 30px;
+        }
+        #top span {
+            margin-left: 24px;
+            margin-right: 25px;
+        }
+        #side {
+            margin-top: 22px;
+            margin-bottom: 22px;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            word-spacing: 22px;
+        }
+        #container {
+            color: white;
+            margin-left: 30px;
+            position: absolute;
+            top: 135px;
         }
     </style>
   </head>
@@ -29,6 +58,7 @@
             width: width,
             height: height,
         });
+        
 
         function drawGameBoard() {
             var layer = new Konva.Layer();
@@ -37,8 +67,8 @@
                 image: background,
                 x: 0,
                 y: 0,
-                width: 700,
-                height: 700,
+                width: 660,
+                height: 660,
                 draggable: false,
             });
 
@@ -241,6 +271,202 @@
                 ship2b.rotate(90);
             });
 
+
+            ship5a.on('dragend', (e) => {
+                ship5a.position({
+                    x: (Math.round(ship5a.x() / 66) * 66),
+                    y: (Math.round(ship5a.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            ship5a.on('dragmove', (e) => {
+                ship5a.position({
+                    x: (Math.round(ship5a.x() / 66) * 66),
+                    y: (Math.round(ship5a.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            ship5b.on('dragend', (e) => {
+                ship5b.position({
+                    x: (Math.round(ship5b.x() / 66) * 66),
+                    y: (Math.round(ship5b.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            ship5b.on('dragmove', (e) => {
+                ship5b.position({
+                    x: (Math.round(ship5b.x() / 66) * 66),
+                    y: (Math.round(ship5b.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            ship4a.on('dragend', (e) => {
+                ship4a.position({
+                    x: (Math.round(ship4a.x() / 66) * 66),
+                    y: (Math.round(ship4a.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            ship4a.on('dragmove', (e) => {
+                ship4a.position({
+                    x: (Math.round(ship4a.x() / 66) * 66),
+                    y: (Math.round(ship4a.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            ship4b.on('dragend', (e) => {
+                ship4b.position({
+                    x: (Math.round(ship4b.x() / 66) * 66),
+                    y: (Math.round(ship4b.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            ship4b.on('dragmove', (e) => {
+                ship4b.position({
+                    x: (Math.round(ship4b.x() / 66) * 66),
+                    y: (Math.round(ship4b.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            ship3a.on('dragend', (e) => {
+                ship3a.position({
+                    x: (Math.round(ship3a.x() / 66) * 66),
+                    y: (Math.round(ship3a.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            ship3a.on('dragmove', (e) => {
+                ship3a.position({
+                    x: (Math.round(ship3a.x() / 66) * 66),
+                    y: (Math.round(ship3a.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            ship3b.on('dragend', (e) => {
+                ship3b.position({
+                    x: (Math.round(ship3b.x() / 66) * 66),
+                    y: (Math.round(ship3b.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            ship3b.on('dragmove', (e) => {
+                ship3b.position({
+                    x: (Math.round(ship3b.x() / 66) * 66),
+                    y: (Math.round(ship3b.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            ship2a.on('dragend', (e) => {
+                ship2a.position({
+                    x: (Math.round(ship2a.x() / 66) * 66),
+                    y: (Math.round(ship2a.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            ship2a.on('dragmove', (e) => {
+                ship2a.position({
+                    x: (Math.round(ship2a.x() / 66) * 66),
+                    y: (Math.round(ship2a.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            ship2b.on('dragend', (e) => {
+                ship2b.position({
+                    x: (Math.round(ship2b.x() / 66) * 66),
+                    y: (Math.round(ship2b.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            ship2b.on('dragmove', (e) => {
+                ship2b.position({
+                    x: (Math.round(ship2b.x() / 66) * 66),
+                    y: (Math.round(ship2b.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            mine1.on('dragend', (e) => {
+                mine1.position({
+                    x: (Math.round(mine1.x() / 66) * 66),
+                    y: (Math.round(mine1.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            mine1.on('dragmove', (e) => {
+                mine1.position({
+                    x: (Math.round(mine1.x() / 66) * 66),
+                    y: (Math.round(mine1.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            mine2.on('dragend', (e) => {
+                mine2.position({
+                    x: (Math.round(mine2.x() / 66) * 66),
+                    y: (Math.round(mine2.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            mine2.on('dragmove', (e) => {
+                mine2.position({
+                    x: (Math.round(mine2.x() / 66) * 66),
+                    y: (Math.round(mine2.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            mine3.on('dragend', (e) => {
+                mine3.position({
+                    x: (Math.round(mine3.x() / 66) * 66),
+                    y: (Math.round(mine3.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            mine3.on('dragmove', (e) => {
+                mine3.position({
+                    x: (Math.round(mine3.x() / 66) * 66),
+                    y: (Math.round(mine3.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            mine4.on('dragend', (e) => {
+                mine4.position({
+                    x: (Math.round(mine4.x() / 66) * 66),
+                    y: (Math.round(mine4.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            mine4.on('dragmove', (e) => {
+                mine4.position({
+                    x: (Math.round(mine4.x() / 66) * 66),
+                    y: (Math.round(mine4.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            mine5.on('dragend', (e) => {
+                mine5.position({
+                    x: (Math.round(mine5.x() / 66) * 66),
+                    y: (Math.round(mine5.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            mine5.on('dragmove', (e) => {
+                mine5.position({
+                    x: (Math.round(mine5.x() / 66) * 66),
+                    y: (Math.round(mine5.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
             layer.add(game_bg);
 
             layer.add(ship5a);
@@ -265,40 +491,40 @@
         background.onload = function() {
             drawGameBoard();
         };
-        background.src = 'https://i.imgur.com/HF80KDD.png';
+        background.src = 'https://i.imgur.com/Jky58kZ.png';
 
         
         var ship_5a = new Image();
         ship_5a.onload = function () {};
-        ship_5a.src = 'https://i.imgur.com/4gdwcbW.png';
+        ship_5a.src = 'https://i.imgur.com/LTnnUU3.png';
 
         var ship_5b = new Image();
         ship_5b.onload = function () {};
-        ship_5b.src = 'https://i.imgur.com/L3LGaps.png';
+        ship_5b.src = 'https://i.imgur.com/ZjuPx41.png';
 
         var ship_4a = new Image();
         ship_4a.onload = function () {};
-        ship_4a.src = 'https://i.imgur.com/2PUpxBN.png';
+        ship_4a.src = 'https://i.imgur.com/lJLYpuz.png';
 
         var ship_4b = new Image();
         ship_4b.onload = function () {};
-        ship_4b.src = 'https://i.imgur.com/XCq8mAF.png';
+        ship_4b.src = 'https://i.imgur.com/829KTlg.png';
 
         var ship_3a = new Image();
         ship_3a.onload = function () {};
-        ship_3a.src = 'https://i.imgur.com/FZqcVrZ.png';
+        ship_3a.src = 'https://i.imgur.com/hcBgSRL.png';
 
         var ship_3b = new Image();
         ship_3b.onload = function () {};
-        ship_3b.src = 'https://i.imgur.com/9VfS2Qh.png';
+        ship_3b.src = 'https://i.imgur.com/91Ja90p.png';
 
         var ship_2a = new Image();
         ship_2a.onload = function () {};
-        ship_2a.src = 'https://i.imgur.com/GAduTZ3.png';
+        ship_2a.src = 'https://i.imgur.com/FIvWICQ.png';
 
         var ship_2b = new Image();
         ship_2b.onload = function () {};
-        ship_2b.src = 'https://i.imgur.com/BAiYAcU.png';
+        ship_2b.src = 'https://i.imgur.com/6zMh6C2.png';
 
         var mine = new Image();
         mine.onload = function () {};
