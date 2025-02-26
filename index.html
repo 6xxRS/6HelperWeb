@@ -467,6 +467,211 @@
                 stage.batchDraw();
             });
 
+            var border = new Konva.Layer();
+            var border_a = new Konva.Text({
+                x: 670,
+                y: 20,
+                text: 'A',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_b = new Konva.Text({
+                x: 670,
+                y: 86,
+                text: 'B',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_c = new Konva.Text({
+                x: 670,
+                y: 152,
+                text: 'C',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_d = new Konva.Text({
+                x: 670,
+                y: 218,
+                text: 'D',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_e = new Konva.Text({
+                x: 670,
+                y: 284,
+                text: 'E',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_f = new Konva.Text({
+                x: 670,
+                y: 350,
+                text: 'F',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_g = new Konva.Text({
+                x: 670,
+                y: 416,
+                text: 'G',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_h = new Konva.Text({
+                x: 670,
+                y: 482,
+                text: 'H',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_i = new Konva.Text({
+                x: 674,
+                y: 548,
+                text: 'I',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_j = new Konva.Text({
+                x: 673,
+                y: 614,
+                text: 'J',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_1 = new Konva.Text({
+                x: 25,
+                y: 666,
+                text: '1',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_2 = new Konva.Text({
+                x: 91,
+                y: 666,
+                text: '2',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_3 = new Konva.Text({
+                x: 157,
+                y: 666,
+                text: '3',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_4 = new Konva.Text({
+                x: 223,
+                y: 666,
+                text: '4',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_5 = new Konva.Text({
+                x: 289,
+                y: 666,
+                text: '5',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_6 = new Konva.Text({
+                x: 355,
+                y: 666,
+                text: '6',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_7 = new Konva.Text({
+                x: 421,
+                y: 666,
+                text: '7',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_8 = new Konva.Text({
+                x: 487,
+                y: 666,
+                text: '8',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_9 = new Konva.Text({
+                x: 553,
+                y: 666,
+                text: '9',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_10 = new Konva.Text({
+                x: 614,
+                y: 666,
+                text: '10',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            
+
+            border.add(border_a);
+            border.add(border_b);
+            border.add(border_c);
+            border.add(border_d);
+            border.add(border_e);
+            border.add(border_f);
+            border.add(border_g);
+            border.add(border_h);
+            border.add(border_i);
+            border.add(border_j);
+
+            border.add(border_1);
+            border.add(border_2);
+            border.add(border_3);
+            border.add(border_4);
+            border.add(border_5);
+            border.add(border_6);
+            border.add(border_7);
+            border.add(border_8);
+            border.add(border_9);
+            border.add(border_10);
+            
             layer.add(game_bg);
 
             layer.add(ship5a);
@@ -484,6 +689,7 @@
             layer.add(mine5);
 
             stage.add(layer);
+            stage.add(border);
 
         }
 
@@ -542,7 +748,7 @@
         mine.crossOrigin = 'Anonymous';
 
         async function exportStageToClipboard(stage) {
-            const dataURL = stage.toDataURL();
+            const dataURL = stage.toDataURL({ x: 0, y: 0, width: 690, height: 690 });
 
             try {
                 const blob = await (await fetch(dataURL)).blob();
@@ -551,6 +757,31 @@
                 alert("Game board copied to clipboard successfully!\nYou may simply paste this (ctrl + v) into your team channel in Discord.");
             } catch (error) {
                 alert("Failed to copy game board to clipboard. Please try again or contact @6xx on Discord.");
+            }
+        }
+
+        async function getImageFromClipboard() {
+            try {
+                const clipboardItems = await navigator.clipboard.read();
+                for (const clipboardItem of clipboardItems) {
+                    if (clipboardItem.types.includes("image/png") || clipboardItem.types.includes("image/jpeg")) {
+                        const blob = await clipboardItem.getType("image/png");
+                        const imageURL = URL.createObjectURL(blob);
+                        return imageURL;
+                    }
+                }
+            } catch (error) {
+                console.error("Error reading from clipboard:", error);
+                return null;
+            }
+        }
+
+        async function drawBorder() {
+            try {
+
+            } catch (error) {
+                console.error("Error reading from clipboard:", error);
+                return null;
             }
         }
 
