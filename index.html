@@ -31,8 +31,8 @@
     <div id="buttons"><button id="save">Copy to Clipboard</button></div>
     <div id="container"></div>
     <script>
-        var width = window.innerWidth;
-        var height = window.innerHeight;
+        var width = 1150;
+        var height = 700;
 
         var stage = new Konva.Stage({
             container: 'container',
@@ -55,6 +55,7 @@
 
             
             var ship5a = new Konva.Image({
+                name: "ship5a",
                 image: ship_5a,
                 x: 700,
                 y: 20,
@@ -64,6 +65,7 @@
             });
 
             var ship5b = new Konva.Image({
+                name: "ship5b",
                 image: ship_5b,
                 x: 700,
                 y: 90,
@@ -73,6 +75,7 @@
             });
 
             var ship4a = new Konva.Image({
+                name: "ship4a",
                 image: ship_4a,
                 x: 700,
                 y: 160,
@@ -82,6 +85,7 @@
             });
 
             var ship4b = new Konva.Image({
+                name: "ship4b",
                 image: ship_4b,
                 x: 700,
                 y: 230,
@@ -91,6 +95,7 @@
             });
 
             var ship3a = new Konva.Image({
+                name: "ship3a",
                 image: ship_3a,
                 x: 700,
                 y: 300,
@@ -100,6 +105,7 @@
             });
 
             var ship3b = new Konva.Image({
+                name: "ship3b",
                 image: ship_3b,
                 x: 700,
                 y: 370,
@@ -109,6 +115,7 @@
             });
 
             var ship2a = new Konva.Image({
+                name: "ship2a",
                 image: ship_2a,
                 x: 700,
                 y: 440,
@@ -118,6 +125,7 @@
             });
 
             var ship2b = new Konva.Image({
+                name: "ship2b",
                 image: ship_2b,
                 x: 700,
                 y: 510,
@@ -127,6 +135,7 @@
             });
 
             var mine1 = new Konva.Image({
+                name: "mine",
                 image: mine,
                 x: 700,
                 y: 580,
@@ -136,6 +145,7 @@
             });
 
             var mine2 = new Konva.Image({
+                name: "mine",
                 image: mine,
                 x: 770,
                 y: 580,
@@ -145,6 +155,7 @@
             });
 
             var mine3 = new Konva.Image({
+                name: "mine",
                 image: mine,
                 x: 840,
                 y: 580,
@@ -154,6 +165,7 @@
             });
 
             var mine4 = new Konva.Image({
+                name: "mine",
                 image: mine,
                 x: 910,
                 y: 580,
@@ -163,6 +175,7 @@
             });
 
             var mine5 = new Konva.Image({
+                name: "mine",
                 image: mine,
                 x: 980,
                 y: 580,
@@ -178,8 +191,38 @@
             ship5a.on('mouseout', function () {
                 document.body.style.cursor = 'default';
             });
-            ship5a.on('click', function() {
-                ship5a.rotate(90);
+            ship5a.on('click', async function() {
+                if (ship5a.attrs.rotation == 360)
+                    ship5a.attrs.rotation = 0;
+
+                if (ship5a.attrs.rotation == 270) {
+                    ship5a.rotate(90);
+                    ship5a.position({
+                        x: (Math.round(ship5a.x() / 66) * 66),
+                        y: (Math.round(ship5a.y() / 66) * 66) - 66
+                    });
+                }
+                if (ship5a.attrs.rotation == 180) {
+                    ship5a.rotate(90);
+                    ship5a.position({
+                        x: (Math.round(ship5a.x() / 66) * 66) - 66,
+                        y: (Math.round(ship5a.y() / 66) * 66)
+                    });
+                }
+                if (ship5a.attrs.rotation == 90) {
+                    ship5a.rotate(90);
+                    ship5a.position({
+                        x: (Math.round(ship5a.x() / 66) * 66),
+                        y: (Math.round(ship5a.y() / 66) * 66) + 66
+                    });
+                }
+                if (ship5a.attrs.rotation == 0) {
+                    ship5a.rotate(90);
+                    ship5a.position({
+                        x: (Math.round(ship5a.x() / 66) * 66) + 66,
+                        y: (Math.round(ship5a.y() / 66) * 66)
+                    });
+                }
             });
 
             ship5b.on('mouseover', function () {
@@ -188,8 +231,38 @@
             ship5b.on('mouseout', function () {
                 document.body.style.cursor = 'default';
             });
-            ship5b.on('click', function() {
-                ship5b.rotate(90);
+            ship5b.on('click', async function() {
+                if (ship5b.attrs.rotation == 360)
+                    ship5b.attrs.rotation = 0;
+
+                if (ship5b.attrs.rotation == 270) {
+                    ship5b.rotate(90);
+                    ship5b.position({
+                        x: (Math.round(ship5b.x() / 66) * 66),
+                        y: (Math.round(ship5b.y() / 66) * 66) - 66
+                    });
+                }
+                if (ship5b.attrs.rotation == 180) {
+                    ship5b.rotate(90);
+                    ship5b.position({
+                        x: (Math.round(ship5b.x() / 66) * 66) - 66,
+                        y: (Math.round(ship5b.y() / 66) * 66)
+                    });
+                }
+                if (ship5b.attrs.rotation == 90) {
+                    ship5b.rotate(90);
+                    ship5b.position({
+                        x: (Math.round(ship5b.x() / 66) * 66),
+                        y: (Math.round(ship5b.y() / 66) * 66) + 66
+                    });
+                }
+                if (ship5b.attrs.rotation == 0) {
+                    ship5b.rotate(90);
+                    ship5b.position({
+                        x: (Math.round(ship5b.x() / 66) * 66) + 66,
+                        y: (Math.round(ship5b.y() / 66) * 66)
+                    });
+                }
             });
 
             ship4a.on('mouseover', function () {
@@ -198,8 +271,38 @@
             ship4a.on('mouseout', function () {
                 document.body.style.cursor = 'default';
             });
-            ship4a.on('click', function() {
-                ship4a.rotate(90);
+            ship4a.on('click', async function() {
+                if (ship4a.attrs.rotation == 360)
+                    ship4a.attrs.rotation = 0;
+
+                if (ship4a.attrs.rotation == 270) {
+                    ship4a.rotate(90);
+                    ship4a.position({
+                        x: (Math.round(ship4a.x() / 66) * 66),
+                        y: (Math.round(ship4a.y() / 66) * 66) - 66
+                    });
+                }
+                if (ship4a.attrs.rotation == 180) {
+                    ship4a.rotate(90);
+                    ship4a.position({
+                        x: (Math.round(ship4a.x() / 66) * 66) - 66,
+                        y: (Math.round(ship4a.y() / 66) * 66)
+                    });
+                }
+                if (ship4a.attrs.rotation == 90) {
+                    ship4a.rotate(90);
+                    ship4a.position({
+                        x: (Math.round(ship4a.x() / 66) * 66),
+                        y: (Math.round(ship4a.y() / 66) * 66) + 66
+                    });
+                }
+                if (ship4a.attrs.rotation == 0) {
+                    ship4a.rotate(90);
+                    ship4a.position({
+                        x: (Math.round(ship4a.x() / 66) * 66) + 66,
+                        y: (Math.round(ship4a.y() / 66) * 66)
+                    });
+                }
             });
 
             ship4b.on('mouseover', function () {
@@ -208,8 +311,38 @@
             ship4b.on('mouseout', function () {
                 document.body.style.cursor = 'default';
             });
-            ship4b.on('click', function() {
-                ship4b.rotate(90);
+            ship4b.on('click', async function() {
+                if (ship4b.attrs.rotation == 360)
+                    ship4b.attrs.rotation = 0;
+
+                if (ship4b.attrs.rotation == 270) {
+                    ship4b.rotate(90);
+                    ship4b.position({
+                        x: (Math.round(ship4b.x() / 66) * 66),
+                        y: (Math.round(ship4b.y() / 66) * 66) - 66
+                    });
+                }
+                if (ship4b.attrs.rotation == 180) {
+                    ship4b.rotate(90);
+                    ship4b.position({
+                        x: (Math.round(ship4b.x() / 66) * 66) - 66,
+                        y: (Math.round(ship4b.y() / 66) * 66)
+                    });
+                }
+                if (ship4b.attrs.rotation == 90) {
+                    ship4b.rotate(90);
+                    ship4b.position({
+                        x: (Math.round(ship4b.x() / 66) * 66),
+                        y: (Math.round(ship4b.y() / 66) * 66) + 66
+                    });
+                }
+                if (ship4b.attrs.rotation == 0) {
+                    ship4b.rotate(90);
+                    ship4b.position({
+                        x: (Math.round(ship4b.x() / 66) * 66) + 66,
+                        y: (Math.round(ship4b.y() / 66) * 66)
+                    });
+                }
             });
 
             ship3a.on('mouseover', function () {
@@ -218,8 +351,38 @@
             ship3a.on('mouseout', function () {
                 document.body.style.cursor = 'default';
             });
-            ship3a.on('click', function() {
-                ship3a.rotate(90);
+            ship3a.on('click', async function() {
+                if (ship3a.attrs.rotation == 360)
+                    ship3a.attrs.rotation = 0;
+
+                if (ship3a.attrs.rotation == 270) {
+                    ship3a.rotate(90);
+                    ship3a.position({
+                        x: (Math.round(ship3a.x() / 66) * 66),
+                        y: (Math.round(ship3a.y() / 66) * 66) - 66
+                    });
+                }
+                if (ship3a.attrs.rotation == 180) {
+                    ship3a.rotate(90);
+                    ship3a.position({
+                        x: (Math.round(ship3a.x() / 66) * 66) - 66,
+                        y: (Math.round(ship3a.y() / 66) * 66)
+                    });
+                }
+                if (ship3a.attrs.rotation == 90) {
+                    ship3a.rotate(90);
+                    ship3a.position({
+                        x: (Math.round(ship3a.x() / 66) * 66),
+                        y: (Math.round(ship3a.y() / 66) * 66) + 66
+                    });
+                }
+                if (ship3a.attrs.rotation == 0) {
+                    ship3a.rotate(90);
+                    ship3a.position({
+                        x: (Math.round(ship3a.x() / 66) * 66) + 66,
+                        y: (Math.round(ship3a.y() / 66) * 66)
+                    });
+                }
             });
 
             ship3b.on('mouseover', function () {
@@ -228,8 +391,38 @@
             ship3b.on('mouseout', function () {
                 document.body.style.cursor = 'default';
             });
-            ship3b.on('click', function() {
-                ship3b.rotate(90);
+            ship3b.on('click', async function() {
+                if (ship3b.attrs.rotation == 360)
+                    ship3b.attrs.rotation = 0;
+
+                if (ship3b.attrs.rotation == 270) {
+                    ship3b.rotate(90);
+                    ship3b.position({
+                        x: (Math.round(ship3b.x() / 66) * 66),
+                        y: (Math.round(ship3b.y() / 66) * 66) - 66
+                    });
+                }
+                if (ship3b.attrs.rotation == 180) {
+                    ship3b.rotate(90);
+                    ship3b.position({
+                        x: (Math.round(ship3b.x() / 66) * 66) - 66,
+                        y: (Math.round(ship3b.y() / 66) * 66)
+                    });
+                }
+                if (ship3b.attrs.rotation == 90) {
+                    ship3b.rotate(90);
+                    ship3b.position({
+                        x: (Math.round(ship3b.x() / 66) * 66),
+                        y: (Math.round(ship3b.y() / 66) * 66) + 66
+                    });
+                }
+                if (ship3b.attrs.rotation == 0) {
+                    ship3b.rotate(90);
+                    ship3b.position({
+                        x: (Math.round(ship3b.x() / 66) * 66) + 66,
+                        y: (Math.round(ship3b.y() / 66) * 66)
+                    });
+                }
             });
 
             ship2a.on('mouseover', function () {
@@ -238,8 +431,38 @@
             ship2a.on('mouseout', function () {
                 document.body.style.cursor = 'default';
             });
-            ship2a.on('click', function() {
-                ship2a.rotate(90);
+            ship2a.on('click', async function() {
+                if (ship2a.attrs.rotation == 360)
+                    ship2a.attrs.rotation = 0;
+
+                if (ship2a.attrs.rotation == 270) {
+                    ship2a.rotate(90);
+                    ship2a.position({
+                        x: (Math.round(ship2a.x() / 66) * 66),
+                        y: (Math.round(ship2a.y() / 66) * 66) - 66
+                    });
+                }
+                if (ship2a.attrs.rotation == 180) {
+                    ship2a.rotate(90);
+                    ship2a.position({
+                        x: (Math.round(ship2a.x() / 66) * 66) - 66,
+                        y: (Math.round(ship2a.y() / 66) * 66)
+                    });
+                }
+                if (ship2a.attrs.rotation == 90) {
+                    ship2a.rotate(90);
+                    ship2a.position({
+                        x: (Math.round(ship2a.x() / 66) * 66),
+                        y: (Math.round(ship2a.y() / 66) * 66) + 66
+                    });
+                }
+                if (ship2a.attrs.rotation == 0) {
+                    ship2a.rotate(90);
+                    ship2a.position({
+                        x: (Math.round(ship2a.x() / 66) * 66) + 66,
+                        y: (Math.round(ship2a.y() / 66) * 66)
+                    });
+                }
             });
 
             ship2b.on('mouseover', function () {
@@ -248,10 +471,39 @@
             ship2b.on('mouseout', function () {
                 document.body.style.cursor = 'default';
             });
-            ship2b.on('click', function() {
-                ship2b.rotate(90);
-            });
+            ship2b.on('click', async function() {
+                if (ship2b.attrs.rotation == 360)
+                    ship2b.attrs.rotation = 0;
 
+                if (ship2b.attrs.rotation == 270) {
+                    ship2b.rotate(90);
+                    ship2b.position({
+                        x: (Math.round(ship2b.x() / 66) * 66),
+                        y: (Math.round(ship2b.y() / 66) * 66) - 66
+                    });
+                }
+                if (ship2b.attrs.rotation == 180) {
+                    ship2b.rotate(90);
+                    ship2b.position({
+                        x: (Math.round(ship2b.x() / 66) * 66) - 66,
+                        y: (Math.round(ship2b.y() / 66) * 66)
+                    });
+                }
+                if (ship2b.attrs.rotation == 90) {
+                    ship2b.rotate(90);
+                    ship2b.position({
+                        x: (Math.round(ship2b.x() / 66) * 66),
+                        y: (Math.round(ship2b.y() / 66) * 66) + 66
+                    });
+                }
+                if (ship2b.attrs.rotation == 0) {
+                    ship2b.rotate(90);
+                    ship2b.position({
+                        x: (Math.round(ship2b.x() / 66) * 66) + 66,
+                        y: (Math.round(ship2b.y() / 66) * 66)
+                    });
+                }
+            });
 
             ship5a.on('dragend', (e) => {
                 ship5a.position({
@@ -738,31 +990,6 @@
                 alert("Game board copied to clipboard successfully!\nYou may simply paste this (ctrl + v) into your team channel in Discord.");
             } catch (error) {
                 alert("Failed to copy game board to clipboard. Please try again or contact @6xx on Discord.");
-            }
-        }
-
-        async function getImageFromClipboard() {
-            try {
-                const clipboardItems = await navigator.clipboard.read();
-                for (const clipboardItem of clipboardItems) {
-                    if (clipboardItem.types.includes("image/png") || clipboardItem.types.includes("image/jpeg")) {
-                        const blob = await clipboardItem.getType("image/png");
-                        const imageURL = URL.createObjectURL(blob);
-                        return imageURL;
-                    }
-                }
-            } catch (error) {
-                console.error("Error reading from clipboard:", error);
-                return null;
-            }
-        }
-
-        async function drawBorder() {
-            try {
-
-            } catch (error) {
-                console.error("Error reading from clipboard:", error);
-                return null;
             }
         }
 
