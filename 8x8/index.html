@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/konva@9.3.18/konva.min.js"></script>
+    <meta charset="utf-8" />
+    <title>TheyNylocas - Battleships! Board Designer</title>
+    <style>
+        body {
+            margin: 20px 20px 20px 20px;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000000;
+            color: white;
+        }
+        body p {
+            padding-left: 10px;
+        }
+        body #buttons {
+            padding-left: 10px;
+        }
+        #container {
+            color: white;
+            margin-left: 30px;
+            position: absolute;
+            top: 135px;
+        }
+    </style>
+  </head>
+  <body>
+    <p>Instructions: Drag the ships and mines to the desired locations. Click on them to rotate them 90 degrees. When finished, press the button to copy the image to your clipboard.</p>
+    <div id="buttons"><button id="save">Copy to Clipboard</button></div>
+    <div id="container"></div>
+    <script>
+        var width = 900;
+        var height = 700;
+
+        var stage = new Konva.Stage({
+            container: 'container',
+            width: width,
+            height: height,
+        });
+        
+
+        function drawGameBoard() {
+            var layer = new Konva.Layer();
+
+            var game_bg = new Konva.Image({
+                image: background,
+                x: 0,
+                y: 0,
+                width: 528,
+                height: 528,
+                draggable: false,
+            });
+
+            
+            var ship5a = new Konva.Image({
+                name: "ship5a",
+                image: ship_5a,
+                x: 568,
+                y: 20,
+                width: 310,
+                height: 62,
+                draggable: true,
+            });
+
+            var ship5b = new Konva.Image({
+                name: "ship5b",
+                image: ship_5b,
+                x: 568,
+                y: 90,
+                width: 319,
+                height: 64,
+                draggable: true,
+            });
+
+            var ship4a = new Konva.Image({
+                name: "ship4a",
+                image: ship_4a,
+                x: 568,
+                y: 160,
+                width: 248,
+                height: 62,
+                draggable: true,
+            });
+
+            var ship4b = new Konva.Image({
+                name: "ship4b",
+                image: ship_4b,
+                x: 568,
+                y: 230,
+                width: 257,
+                height: 65,
+                draggable: true,
+            });
+
+            var ship3a = new Konva.Image({
+                name: "ship3a",
+                image: ship_3a,
+                x: 568,
+                y: 300,
+                width: 190,
+                height: 64,
+                draggable: true,
+            });
+
+            var ship3b = new Konva.Image({
+                name: "ship3b",
+                image: ship_3b,
+                x: 568,
+                y: 370,
+                width: 190,
+                height: 62,
+                draggable: true,
+            });
+
+            var ship2a = new Konva.Image({
+                name: "ship2a",
+                image: ship_2a,
+                x: 568,
+                y: 440,
+                width: 126,
+                height: 64,
+                draggable: true,
+            });
+
+            var ship2b = new Konva.Image({
+                name: "ship2b",
+                image: ship_2b,
+                x: 568,
+                y: 510,
+                width: 128,
+                height: 62,
+                draggable: true,
+            });
+
+            var mine1 = new Konva.Image({
+                name: "mine",
+                image: mine,
+                x: 568,
+                y: 580,
+                width: 66,
+                height: 66,
+                draggable: true,
+            });
+
+            var mine2 = new Konva.Image({
+                name: "mine",
+                image: mine,
+                x: 638,
+                y: 580,
+                width: 66,
+                height: 66,
+                draggable: true,
+            });
+
+            var mine3 = new Konva.Image({
+                name: "mine",
+                image: mine,
+                x: 708,
+                y: 580,
+                width: 66,
+                height: 66,
+                draggable: true,
+            });
+
+            var mine4 = new Konva.Image({
+                name: "mine",
+                image: mine,
+                x: 778,
+                y: 580,
+                width: 66,
+                height: 66,
+                draggable: true,
+            });
+
+            var mine5 = new Konva.Image({
+                name: "mine",
+                image: mine,
+                x: 848,
+                y: 580,
+                width: 66,
+                height: 66,
+                draggable: true,
+            });
+            
+            ship5a.on('mouseover', function () {
+                document.body.style.cursor = 'pointer';
+            });
+            ship5a.on('mouseout', function () {
+                document.body.style.cursor = 'default';
+            });
+            ship5a.on('click', async function() {
+                if (ship5a.attrs.rotation == 360)
+                    ship5a.attrs.rotation = 0;
+
+                if (ship5a.attrs.rotation == 270) {
+                    ship5a.rotate(90);
+                    ship5a.position({
+                        x: (Math.round(ship5a.x() / 66) * 66),
+                        y: (Math.round(ship5a.y() / 66) * 66) - 66
+                    });
+                }
+                if (ship5a.attrs.rotation == 180) {
+                    ship5a.rotate(90);
+                    ship5a.position({
+                        x: (Math.round(ship5a.x() / 66) * 66) - 66,
+                        y: (Math.round(ship5a.y() / 66) * 66)
+                    });
+                }
+                if (ship5a.attrs.rotation == 90) {
+                    ship5a.rotate(90);
+                    ship5a.position({
+                        x: (Math.round(ship5a.x() / 66) * 66),
+                        y: (Math.round(ship5a.y() / 66) * 66) + 66
+                    });
+                }
+                if (ship5a.attrs.rotation == 0) {
+                    ship5a.rotate(90);
+                    ship5a.position({
+                        x: (Math.round(ship5a.x() / 66) * 66) + 66,
+                        y: (Math.round(ship5a.y() / 66) * 66)
+                    });
+                }
+            });
+
+            ship5b.on('mouseover', function () {
+                document.body.style.cursor = 'pointer';
+            });
+            ship5b.on('mouseout', function () {
+                document.body.style.cursor = 'default';
+            });
+            ship5b.on('click', async function() {
+                if (ship5b.attrs.rotation == 360)
+                    ship5b.attrs.rotation = 0;
+
+                if (ship5b.attrs.rotation == 270) {
+                    ship5b.rotate(90);
+                    ship5b.position({
+                        x: (Math.round(ship5b.x() / 66) * 66),
+                        y: (Math.round(ship5b.y() / 66) * 66) - 66
+                    });
+                }
+                if (ship5b.attrs.rotation == 180) {
+                    ship5b.rotate(90);
+                    ship5b.position({
+                        x: (Math.round(ship5b.x() / 66) * 66) - 66,
+                        y: (Math.round(ship5b.y() / 66) * 66)
+                    });
+                }
+                if (ship5b.attrs.rotation == 90) {
+                    ship5b.rotate(90);
+                    ship5b.position({
+                        x: (Math.round(ship5b.x() / 66) * 66),
+                        y: (Math.round(ship5b.y() / 66) * 66) + 66
+                    });
+                }
+                if (ship5b.attrs.rotation == 0) {
+                    ship5b.rotate(90);
+                    ship5b.position({
+                        x: (Math.round(ship5b.x() / 66) * 66) + 66,
+                        y: (Math.round(ship5b.y() / 66) * 66)
+                    });
+                }
+            });
+
+            ship4a.on('mouseover', function () {
+                document.body.style.cursor = 'pointer';
+            });
+            ship4a.on('mouseout', function () {
+                document.body.style.cursor = 'default';
+            });
+            ship4a.on('click', async function() {
+                if (ship4a.attrs.rotation == 360)
+                    ship4a.attrs.rotation = 0;
+
+                if (ship4a.attrs.rotation == 270) {
+                    ship4a.rotate(90);
+                    ship4a.position({
+                        x: (Math.round(ship4a.x() / 66) * 66),
+                        y: (Math.round(ship4a.y() / 66) * 66) - 66
+                    });
+                }
+                if (ship4a.attrs.rotation == 180) {
+                    ship4a.rotate(90);
+                    ship4a.position({
+                        x: (Math.round(ship4a.x() / 66) * 66) - 66,
+                        y: (Math.round(ship4a.y() / 66) * 66)
+                    });
+                }
+                if (ship4a.attrs.rotation == 90) {
+                    ship4a.rotate(90);
+                    ship4a.position({
+                        x: (Math.round(ship4a.x() / 66) * 66),
+                        y: (Math.round(ship4a.y() / 66) * 66) + 66
+                    });
+                }
+                if (ship4a.attrs.rotation == 0) {
+                    ship4a.rotate(90);
+                    ship4a.position({
+                        x: (Math.round(ship4a.x() / 66) * 66) + 66,
+                        y: (Math.round(ship4a.y() / 66) * 66)
+                    });
+                }
+            });
+
+            ship4b.on('mouseover', function () {
+                document.body.style.cursor = 'pointer';
+            });
+            ship4b.on('mouseout', function () {
+                document.body.style.cursor = 'default';
+            });
+            ship4b.on('click', async function() {
+                if (ship4b.attrs.rotation == 360)
+                    ship4b.attrs.rotation = 0;
+
+                if (ship4b.attrs.rotation == 270) {
+                    ship4b.rotate(90);
+                    ship4b.position({
+                        x: (Math.round(ship4b.x() / 66) * 66),
+                        y: (Math.round(ship4b.y() / 66) * 66) - 66
+                    });
+                }
+                if (ship4b.attrs.rotation == 180) {
+                    ship4b.rotate(90);
+                    ship4b.position({
+                        x: (Math.round(ship4b.x() / 66) * 66) - 66,
+                        y: (Math.round(ship4b.y() / 66) * 66)
+                    });
+                }
+                if (ship4b.attrs.rotation == 90) {
+                    ship4b.rotate(90);
+                    ship4b.position({
+                        x: (Math.round(ship4b.x() / 66) * 66),
+                        y: (Math.round(ship4b.y() / 66) * 66) + 66
+                    });
+                }
+                if (ship4b.attrs.rotation == 0) {
+                    ship4b.rotate(90);
+                    ship4b.position({
+                        x: (Math.round(ship4b.x() / 66) * 66) + 66,
+                        y: (Math.round(ship4b.y() / 66) * 66)
+                    });
+                }
+            });
+
+            ship3a.on('mouseover', function () {
+                document.body.style.cursor = 'pointer';
+            });
+            ship3a.on('mouseout', function () {
+                document.body.style.cursor = 'default';
+            });
+            ship3a.on('click', async function() {
+                if (ship3a.attrs.rotation == 360)
+                    ship3a.attrs.rotation = 0;
+
+                if (ship3a.attrs.rotation == 270) {
+                    ship3a.rotate(90);
+                    ship3a.position({
+                        x: (Math.round(ship3a.x() / 66) * 66),
+                        y: (Math.round(ship3a.y() / 66) * 66) - 66
+                    });
+                }
+                if (ship3a.attrs.rotation == 180) {
+                    ship3a.rotate(90);
+                    ship3a.position({
+                        x: (Math.round(ship3a.x() / 66) * 66) - 66,
+                        y: (Math.round(ship3a.y() / 66) * 66)
+                    });
+                }
+                if (ship3a.attrs.rotation == 90) {
+                    ship3a.rotate(90);
+                    ship3a.position({
+                        x: (Math.round(ship3a.x() / 66) * 66),
+                        y: (Math.round(ship3a.y() / 66) * 66) + 66
+                    });
+                }
+                if (ship3a.attrs.rotation == 0) {
+                    ship3a.rotate(90);
+                    ship3a.position({
+                        x: (Math.round(ship3a.x() / 66) * 66) + 66,
+                        y: (Math.round(ship3a.y() / 66) * 66)
+                    });
+                }
+            });
+
+            ship3b.on('mouseover', function () {
+                document.body.style.cursor = 'pointer';
+            });
+            ship3b.on('mouseout', function () {
+                document.body.style.cursor = 'default';
+            });
+            ship3b.on('click', async function() {
+                if (ship3b.attrs.rotation == 360)
+                    ship3b.attrs.rotation = 0;
+
+                if (ship3b.attrs.rotation == 270) {
+                    ship3b.rotate(90);
+                    ship3b.position({
+                        x: (Math.round(ship3b.x() / 66) * 66),
+                        y: (Math.round(ship3b.y() / 66) * 66) - 66
+                    });
+                }
+                if (ship3b.attrs.rotation == 180) {
+                    ship3b.rotate(90);
+                    ship3b.position({
+                        x: (Math.round(ship3b.x() / 66) * 66) - 66,
+                        y: (Math.round(ship3b.y() / 66) * 66)
+                    });
+                }
+                if (ship3b.attrs.rotation == 90) {
+                    ship3b.rotate(90);
+                    ship3b.position({
+                        x: (Math.round(ship3b.x() / 66) * 66),
+                        y: (Math.round(ship3b.y() / 66) * 66) + 66
+                    });
+                }
+                if (ship3b.attrs.rotation == 0) {
+                    ship3b.rotate(90);
+                    ship3b.position({
+                        x: (Math.round(ship3b.x() / 66) * 66) + 66,
+                        y: (Math.round(ship3b.y() / 66) * 66)
+                    });
+                }
+            });
+
+            ship2a.on('mouseover', function () {
+                document.body.style.cursor = 'pointer';
+            });
+            ship2a.on('mouseout', function () {
+                document.body.style.cursor = 'default';
+            });
+            ship2a.on('click', async function() {
+                if (ship2a.attrs.rotation == 360)
+                    ship2a.attrs.rotation = 0;
+
+                if (ship2a.attrs.rotation == 270) {
+                    ship2a.rotate(90);
+                    ship2a.position({
+                        x: (Math.round(ship2a.x() / 66) * 66),
+                        y: (Math.round(ship2a.y() / 66) * 66) - 66
+                    });
+                }
+                if (ship2a.attrs.rotation == 180) {
+                    ship2a.rotate(90);
+                    ship2a.position({
+                        x: (Math.round(ship2a.x() / 66) * 66) - 66,
+                        y: (Math.round(ship2a.y() / 66) * 66)
+                    });
+                }
+                if (ship2a.attrs.rotation == 90) {
+                    ship2a.rotate(90);
+                    ship2a.position({
+                        x: (Math.round(ship2a.x() / 66) * 66),
+                        y: (Math.round(ship2a.y() / 66) * 66) + 66
+                    });
+                }
+                if (ship2a.attrs.rotation == 0) {
+                    ship2a.rotate(90);
+                    ship2a.position({
+                        x: (Math.round(ship2a.x() / 66) * 66) + 66,
+                        y: (Math.round(ship2a.y() / 66) * 66)
+                    });
+                }
+            });
+
+            ship2b.on('mouseover', function () {
+                document.body.style.cursor = 'pointer';
+            });
+            ship2b.on('mouseout', function () {
+                document.body.style.cursor = 'default';
+            });
+            ship2b.on('click', async function() {
+                if (ship2b.attrs.rotation == 360)
+                    ship2b.attrs.rotation = 0;
+
+                if (ship2b.attrs.rotation == 270) {
+                    ship2b.rotate(90);
+                    ship2b.position({
+                        x: (Math.round(ship2b.x() / 66) * 66),
+                        y: (Math.round(ship2b.y() / 66) * 66) - 66
+                    });
+                }
+                if (ship2b.attrs.rotation == 180) {
+                    ship2b.rotate(90);
+                    ship2b.position({
+                        x: (Math.round(ship2b.x() / 66) * 66) - 66,
+                        y: (Math.round(ship2b.y() / 66) * 66)
+                    });
+                }
+                if (ship2b.attrs.rotation == 90) {
+                    ship2b.rotate(90);
+                    ship2b.position({
+                        x: (Math.round(ship2b.x() / 66) * 66),
+                        y: (Math.round(ship2b.y() / 66) * 66) + 66
+                    });
+                }
+                if (ship2b.attrs.rotation == 0) {
+                    ship2b.rotate(90);
+                    ship2b.position({
+                        x: (Math.round(ship2b.x() / 66) * 66) + 66,
+                        y: (Math.round(ship2b.y() / 66) * 66)
+                    });
+                }
+            });
+
+            ship5a.on('dragend', (e) => {
+                ship5a.position({
+                    x: (Math.round(ship5a.x() / 66) * 66),
+                    y: (Math.round(ship5a.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            ship5a.on('dragmove', (e) => {
+                ship5a.position({
+                    x: (Math.round(ship5a.x() / 66) * 66),
+                    y: (Math.round(ship5a.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            ship5b.on('dragend', (e) => {
+                ship5b.position({
+                    x: (Math.round(ship5b.x() / 66) * 66),
+                    y: (Math.round(ship5b.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            ship5b.on('dragmove', (e) => {
+                ship5b.position({
+                    x: (Math.round(ship5b.x() / 66) * 66),
+                    y: (Math.round(ship5b.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            ship4a.on('dragend', (e) => {
+                ship4a.position({
+                    x: (Math.round(ship4a.x() / 66) * 66),
+                    y: (Math.round(ship4a.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            ship4a.on('dragmove', (e) => {
+                ship4a.position({
+                    x: (Math.round(ship4a.x() / 66) * 66),
+                    y: (Math.round(ship4a.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            ship4b.on('dragend', (e) => {
+                ship4b.position({
+                    x: (Math.round(ship4b.x() / 66) * 66),
+                    y: (Math.round(ship4b.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            ship4b.on('dragmove', (e) => {
+                ship4b.position({
+                    x: (Math.round(ship4b.x() / 66) * 66),
+                    y: (Math.round(ship4b.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            ship3a.on('dragend', (e) => {
+                ship3a.position({
+                    x: (Math.round(ship3a.x() / 66) * 66),
+                    y: (Math.round(ship3a.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            ship3a.on('dragmove', (e) => {
+                ship3a.position({
+                    x: (Math.round(ship3a.x() / 66) * 66),
+                    y: (Math.round(ship3a.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            ship3b.on('dragend', (e) => {
+                ship3b.position({
+                    x: (Math.round(ship3b.x() / 66) * 66),
+                    y: (Math.round(ship3b.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            ship3b.on('dragmove', (e) => {
+                ship3b.position({
+                    x: (Math.round(ship3b.x() / 66) * 66),
+                    y: (Math.round(ship3b.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            ship2a.on('dragend', (e) => {
+                ship2a.position({
+                    x: (Math.round(ship2a.x() / 66) * 66),
+                    y: (Math.round(ship2a.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            ship2a.on('dragmove', (e) => {
+                ship2a.position({
+                    x: (Math.round(ship2a.x() / 66) * 66),
+                    y: (Math.round(ship2a.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            ship2b.on('dragend', (e) => {
+                ship2b.position({
+                    x: (Math.round(ship2b.x() / 66) * 66),
+                    y: (Math.round(ship2b.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            ship2b.on('dragmove', (e) => {
+                ship2b.position({
+                    x: (Math.round(ship2b.x() / 66) * 66),
+                    y: (Math.round(ship2b.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            mine1.on('dragend', (e) => {
+                mine1.position({
+                    x: (Math.round(mine1.x() / 66) * 66),
+                    y: (Math.round(mine1.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            mine1.on('dragmove', (e) => {
+                mine1.position({
+                    x: (Math.round(mine1.x() / 66) * 66),
+                    y: (Math.round(mine1.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            mine2.on('dragend', (e) => {
+                mine2.position({
+                    x: (Math.round(mine2.x() / 66) * 66),
+                    y: (Math.round(mine2.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            mine2.on('dragmove', (e) => {
+                mine2.position({
+                    x: (Math.round(mine2.x() / 66) * 66),
+                    y: (Math.round(mine2.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            mine3.on('dragend', (e) => {
+                mine3.position({
+                    x: (Math.round(mine3.x() / 66) * 66),
+                    y: (Math.round(mine3.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            mine3.on('dragmove', (e) => {
+                mine3.position({
+                    x: (Math.round(mine3.x() / 66) * 66),
+                    y: (Math.round(mine3.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            mine4.on('dragend', (e) => {
+                mine4.position({
+                    x: (Math.round(mine4.x() / 66) * 66),
+                    y: (Math.round(mine4.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            mine4.on('dragmove', (e) => {
+                mine4.position({
+                    x: (Math.round(mine4.x() / 66) * 66),
+                    y: (Math.round(mine4.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            mine5.on('dragend', (e) => {
+                mine5.position({
+                    x: (Math.round(mine5.x() / 66) * 66),
+                    y: (Math.round(mine5.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+            mine5.on('dragmove', (e) => {
+                mine5.position({
+                    x: (Math.round(mine5.x() / 66) * 66),
+                    y: (Math.round(mine5.y() / 66) * 66)
+                });
+                stage.batchDraw();
+            });
+
+            var border = new Konva.Layer();
+            var border_a = new Konva.Text({
+                x: 538,
+                y: 20,
+                text: 'A',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_b = new Konva.Text({
+                x: 538,
+                y: 86,
+                text: 'B',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_c = new Konva.Text({
+                x: 538,
+                y: 152,
+                text: 'C',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_d = new Konva.Text({
+                x: 538,
+                y: 218,
+                text: 'D',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_e = new Konva.Text({
+                x: 538,
+                y: 284,
+                text: 'E',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_f = new Konva.Text({
+                x: 538,
+                y: 350,
+                text: 'F',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_g = new Konva.Text({
+                x: 538,
+                y: 416,
+                text: 'G',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_h = new Konva.Text({
+                x: 538,
+                y: 482,
+                text: 'H',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_1 = new Konva.Text({
+                x: 25,
+                y: 534,
+                text: '1',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_2 = new Konva.Text({
+                x: 91,
+                y: 534,
+                text: '2',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_3 = new Konva.Text({
+                x: 157,
+                y: 534,
+                text: '3',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_4 = new Konva.Text({
+                x: 223,
+                y: 534,
+                text: '4',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_5 = new Konva.Text({
+                x: 289,
+                y: 534,
+                text: '5',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_6 = new Konva.Text({
+                x: 355,
+                y: 534,
+                text: '6',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_7 = new Konva.Text({
+                x: 421,
+                y: 534,
+                text: '7',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            var border_8 = new Konva.Text({
+                x: 487,
+                y: 534,
+                text: '8',
+                fontSize: 25,
+                fontFamily: 'Calibri',
+                fill: 'white',
+            });
+
+            border.add(border_a);
+            border.add(border_b);
+            border.add(border_c);
+            border.add(border_d);
+            border.add(border_e);
+            border.add(border_f);
+            border.add(border_g);
+            border.add(border_h);
+
+            border.add(border_1);
+            border.add(border_2);
+            border.add(border_3);
+            border.add(border_4);
+            border.add(border_5);
+            border.add(border_6);
+            border.add(border_7);
+            border.add(border_8);
+            
+            layer.add(game_bg);
+
+            layer.add(ship5a);
+            layer.add(ship5b);
+            layer.add(ship4a);
+            layer.add(ship4b);
+            layer.add(ship3a);
+            layer.add(ship3b);
+            layer.add(ship2a);
+            layer.add(ship2b);
+            layer.add(mine1);
+            layer.add(mine2);
+            layer.add(mine3);
+            layer.add(mine4);
+            layer.add(mine5);
+
+            stage.add(layer);
+            stage.add(border);
+
+        }
+
+        var background = new Image();
+        background.onload = function() {
+            drawGameBoard();
+        };
+        background.src = 'https://i.imgur.com/52ERHDQ.png';
+
+        
+        var ship_5a = new Image();
+        ship_5a.onload = function () {};
+        ship_5a.src = 'https://i.imgur.com/LTnnUU3.png';
+
+        var ship_5b = new Image();
+        ship_5b.onload = function () {};
+        ship_5b.src = 'https://i.imgur.com/ZjuPx41.png';
+
+        var ship_4a = new Image();
+        ship_4a.onload = function () {};
+        ship_4a.src = 'https://i.imgur.com/lJLYpuz.png';
+
+        var ship_4b = new Image();
+        ship_4b.onload = function () {};
+        ship_4b.src = 'https://i.imgur.com/829KTlg.png';
+
+        var ship_3a = new Image();
+        ship_3a.onload = function () {};
+        ship_3a.src = 'https://i.imgur.com/hcBgSRL.png';
+
+        var ship_3b = new Image();
+        ship_3b.onload = function () {};
+        ship_3b.src = 'https://i.imgur.com/91Ja90p.png';
+
+        var ship_2a = new Image();
+        ship_2a.onload = function () {};
+        ship_2a.src = 'https://i.imgur.com/FIvWICQ.png';
+
+        var ship_2b = new Image();
+        ship_2b.onload = function () {};
+        ship_2b.src = 'https://i.imgur.com/6zMh6C2.png';
+
+        var mine = new Image();
+        mine.onload = function () {};
+        mine.src = 'https://i.imgur.com/flLFMiU.png';
+
+        background.crossOrigin = 'Anonymous';
+        ship_5a.crossOrigin = 'Anonymous';
+        ship_5b.crossOrigin = 'Anonymous';
+        ship_4a.crossOrigin = 'Anonymous';
+        ship_4b.crossOrigin = 'Anonymous';
+        ship_3a.crossOrigin = 'Anonymous';
+        ship_3b.crossOrigin = 'Anonymous';
+        ship_2a.crossOrigin = 'Anonymous';
+        ship_2b.crossOrigin = 'Anonymous';
+        mine.crossOrigin = 'Anonymous';
+
+        async function exportStageToClipboard(stage) {
+            const dataURL = stage.toDataURL({ x: 0, y: 0, width: 558, height: 558 });
+
+            try {
+                const blob = await (await fetch(dataURL)).blob();
+                const item = new ClipboardItem({ "image/png": blob });
+                await navigator.clipboard.write([item]);
+                alert("Game board copied to clipboard successfully!\nYou may simply paste this (ctrl + v) into your team channel in Discord.");
+            } catch (error) {
+                alert("Failed to copy game board to clipboard. Please try again or contact @6xx on Discord.");
+            }
+        }
+
+        document.getElementById('save').addEventListener(
+            'click',
+            function () {
+                exportStageToClipboard(stage);
+            },
+            false
+        );
+    </script>
+  </body>
+</html>
